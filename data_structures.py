@@ -1,4 +1,4 @@
-#Lists - unpacing
+#Lists - unpacking
 numbers = [1,2,3,4,5,6,7,8,9]
 first, second, *others = numbers
 print(first)
@@ -56,3 +56,47 @@ def filtered_list(items):
     return filtered
 
 print (filtered_list(items))
+
+# list comprehensions - preferable alternative to map and filter
+new_items =[
+    ("Product1", 20),
+    ("Product2", 14),
+    ("Product3", 45),
+    ("Product4", 9),
+]
+new_prices = [item[1] for item in new_items]
+print(new_prices)
+
+new_filtered = [item for item in new_items if item[1] >=10]
+print (new_filtered)
+
+# ZIP function
+
+list1 =[1,2,3,]
+list2 = [10,20,30]
+
+def zip_function(a,b,*c):
+    zip_out = list(zip(a,b,*c))
+    return zip_out
+
+print(zip_function(list1,list2,"abcd", "bcd","asl","pls"))
+
+#dictionary comprehension
+
+dict = {x:x*2 for x in range(4)}
+print(dict)
+
+# Exercise - find the most repeated character in this sentence
+from pprint import pprint
+sentence = "This is a common interview question"
+char_freq = {}
+for char in sentence:
+    if char in char_freq:
+        char_freq[char] +=1
+    else:
+        char_freq[char] =1
+pprint(char_freq, width=1)
+
+sorted_char_freq_list = sorted(char_freq.items(), key=lambda kv:kv[1], reverse=True)
+print(sorted_char_freq_list)
+print(f"The most repeated letter in the sentence is {sorted_char_freq_list[0]}")
